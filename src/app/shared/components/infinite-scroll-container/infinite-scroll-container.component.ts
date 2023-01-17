@@ -8,7 +8,7 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import { Subscription, throttleTime } from 'rxjs';
+import { Observable, Subscription, throttleTime } from 'rxjs';
 
 @Component({
   selector: 'app-infinite-scroll-container',
@@ -23,7 +23,8 @@ export class InfiniteScrollContainerComponent implements OnInit, OnDestroy {
     this.spyList(el.nativeElement);
   }
   @Output() scrolled = new EventEmitter();
-  @Input() throttleTime = 500;
+  @Input() throttleTime = 1000;
+  @Input() pause$?: Observable<void>;
 
   private emitter = new EventEmitter();
 
