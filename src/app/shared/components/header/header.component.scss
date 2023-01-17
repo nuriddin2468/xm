@@ -2,8 +2,12 @@ mat-toolbar {
   display: flex;
   justify-content: space-around;
   margin-bottom: 12px;
-}
 
-.active-link {
-  text-decoration: underline;
+  .active-link {
+    text-decoration: underline;
+  }
+
+  a {
+    font-size: 16px;
+  }
 }
