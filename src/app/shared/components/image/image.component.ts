@@ -8,7 +8,9 @@ import { Photo } from '../../../features/types/photo';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImageComponent {
-  @Output() addToFavorite = new EventEmitter();
+  @Output() addToFavorite = new EventEmitter<Photo>();
+  @Output() navigateToPhoto = new EventEmitter<Photo>();
   @Input() photo!: Photo;
-  @Input() canAddToFavorites: boolean = false;
+
+  @Input() mode?: 'photos' | 'favorites';
 }

@@ -7,8 +7,15 @@
 >
 <div
   class="overlay"
-  *ngIf="canAddToFavorites"
+  *ngIf="mode === 'photos'"
   (click)="addToFavorite.emit(photo)"
 >
   Add to Favorites
+</div>
+<div
+  class="overlay"
+  *ngIf="mode === 'favorites'"
+  (click)="navigateToPhoto.emit(photo)"
+>
+  Go to Photo
 </div>

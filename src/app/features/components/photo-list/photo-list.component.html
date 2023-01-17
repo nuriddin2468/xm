@@ -3,7 +3,7 @@
     <app-image
       *ngFor="let photo of photos"
       [photo]="photo"
-      [canAddToFavorites]="true"
+      mode="photos"
       (addToFavorite)="addToFavorite($event)"
     ></app-image>
   </div>
