@@ -1,20 +1,10 @@
 <app-infinite-scroll-container (scrolled)="fetchPhotos()">
   <div class="content">
-    <div
+    <app-image
       *ngFor="let photo of photos"
-      class="container"
-      (click)="addToFavorite(photo)"
-    >
-      <img
-        [src]="photo.download_url"
-        height="100%"
-        loading="lazy"
-        width="100%"
-        alt=""
-      >
-      <div class="overlay">
-        Add to Favorites
-      </div>
-    </div>
+      [photo]="photo"
+      [canAddToFavorites]="true"
+      (addToFavorite)="addToFavorite($event)"
+    ></app-image>
   </div>
 </app-infinite-scroll-container>

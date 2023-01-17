@@ -1,0 +1,7 @@
+@mixin image-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  column-gap: 30px;
+  padding: 0 60px 60px 60px;
+}

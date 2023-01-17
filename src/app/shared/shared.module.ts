@@ -5,18 +5,21 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import { InfiniteScrollContainerComponent } from './components/infinite-scroll-container/infinite-scroll-container.component';
+import { ImageComponent } from './components/image/image.component';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    InfiniteScrollContainerComponent
+    InfiniteScrollContainerComponent,
+    ImageComponent
   ],
-  exports: [
-    HeaderComponent,
-    InfiniteScrollContainerComponent
-  ],
+    exports: [
+        HeaderComponent,
+        InfiniteScrollContainerComponent,
+        ImageComponent
+    ],
   imports: [
     CommonModule,
     MatToolbarModule,

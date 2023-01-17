@@ -1,0 +1,36 @@
+:host {
+  position: relative;
+  height: 500px;
+  width: calc(100% / 4);
+  margin-top: 20px;
+  flex-grow: 1;
+
+
+  img {
+    object-fit: cover;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.6rem;
+  }
+
+  &:hover .overlay {
+    opacity: 1;
+  }
+}
+
