@@ -9,6 +9,8 @@ import { random } from '../../shared/utils/random';
 })
 export class PhotoService {
 
+  private endpoint = 'https://picsum.photos';
+
   private favorites$ = new BehaviorSubject<Photo[]>([]);
 
   constructor(
@@ -19,12 +21,16 @@ export class PhotoService {
     const params = new HttpParams()
       .set('page', page)
       .set('limit', limit);
-    return this.http.get<Photo[]>('https://picsum.photos/v2/list', { params })
+    return this.http.get<Photo[]>(`${this.endpoint}/v2/list`, { params })
       .pipe(delay(random(200, 300)));
   }
 
   getFavorites(): Observable<Photo[]> {
     return this.favorites$.asObservable();
+  }
+
+  getPhotoById(id: string): Observable<Photo> {
+   return this.http.get<Photo>(`${this.endpoint}/id/${id}/info`);
   }
 
   addPhotoToFavorite(photo: Photo): void {

@@ -1,0 +1,9 @@
+<ng-container *ngIf="photo">
+  <div class="container">
+    <app-image [photo]="photo"></app-image>
+  </div>
+
+  <div class="footer">
+    <button (click)="removePhotoFromFavorite(photo)" mat-button mat-stroked-button color="warn">Remove from Favorite</button>
+  </div>
+</ng-container>

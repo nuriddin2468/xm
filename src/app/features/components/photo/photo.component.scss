@@ -1,0 +1,18 @@
+:host {
+  display: block;
+  padding: 0 60px 60px 60px;
+
+  .container {
+    height: 600px;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+
+    button {
+      font-size: 18px;
+    }
+  }
+}
