@@ -1,14 +1,14 @@
-<ng-container
-  (click)="canAddToFavorites ? addToFavorite.emit(photo): null"
->
-  <img
+<img
     [src]="photo.download_url"
     height="100%"
     loading="lazy"
     width="100%"
     alt=""
-  >
-  <div class="overlay" *ngIf="canAddToFavorites">
-    Add to Favorites
-  </div>
-</ng-container>
+>
+<div
+  class="overlay"
+  *ngIf="canAddToFavorites"
+  (click)="addToFavorite.emit(photo)"
+>
+  Add to Favorites
+</div>
