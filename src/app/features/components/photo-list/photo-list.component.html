@@ -1,7 +1,7 @@
 <app-infinite-scroll-container (scrolled)="fetchPhotos()">
   <div class="content">
     <app-image
-      *ngFor="let photo of photos"
+      *ngFor="let photo of photos; trackBy: photoTrackBy"
       [photo]="photo"
       mode="photos"
       (addToFavorite)="addToFavorite($event)"

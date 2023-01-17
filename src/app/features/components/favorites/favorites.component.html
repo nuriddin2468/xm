@@ -1,5 +1,5 @@
 <app-image
-  *ngFor="let photo of (photos$ | async)"
+  *ngFor="let photo of (photos$ | async); trackBy: photoTrackBy"
   [photo]="photo"
   mode="favorites"
   (navigateToPhoto)="navigateToPhoto($event)"

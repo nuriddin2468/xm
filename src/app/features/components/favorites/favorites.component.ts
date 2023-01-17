@@ -21,4 +21,8 @@ export class FavoritesComponent {
   navigateToPhoto(photo: Photo) {
     this.router.navigate(['/photos', photo.id])
   }
+
+  photoTrackBy(index: number, photo: Photo): string {
+    return photo.id;
+  }
 }

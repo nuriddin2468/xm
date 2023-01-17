@@ -34,4 +34,8 @@ export class PhotoListComponent implements OnDestroy {
   addToFavorite(photo: Photo) {
     this.photoService.addPhotoToFavorite(photo);
   }
+
+  photoTrackBy(index: number, photo: Photo): string {
+    return photo.id;
+  }
 }
