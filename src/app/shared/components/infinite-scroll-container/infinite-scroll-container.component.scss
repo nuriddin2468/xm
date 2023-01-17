@@ -1,0 +1,25 @@
+$space: 24px;
+$box-size: 150px;
+
+:host {
+  overflow: hidden;
+  padding-bottom: $space;
+  display: block;
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    margin-top: $space;
+
+    .loading {
+      height: $box-size;
+      width: $box-size;
+      font-size: 24px;
+      border-radius: 50%;
+      border: 1px solid;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
