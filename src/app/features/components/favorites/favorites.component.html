@@ -1,0 +1,6 @@
+<app-image
+  *ngFor="let photo of (photos$ | async)"
+  [photo]="photo"
+  mode="favorites"
+  (navigateToPhoto)="navigateToPhoto($event)"
+></app-image>
