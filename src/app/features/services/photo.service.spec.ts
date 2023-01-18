@@ -8,6 +8,22 @@ import { photoMock } from '../../shared/mocks/photoMock';
 describe('PhotoServiceService', () => {
   let service: PhotoService;
   let controller: HttpTestingController;
+  let store: any = {};
+
+  const mockLocalStorage = {
+    getItem: (key: string): string => {
+      return key in store ? store[key] : null;
+    },
+    setItem: (key: string, value: string) => {
+      store[key] = `${value}`;
+    },
+    removeItem: (key: string) => {
+      delete store[key];
+    },
+    clear: () => {
+      store = {};
+    }
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -17,6 +33,15 @@ describe('PhotoServiceService', () => {
     });
     service = TestBed.inject(PhotoService);
     controller = TestBed.inject(HttpTestingController);
+
+    spyOn(localStorage, 'getItem')
+      .and.callFake(mockLocalStorage.getItem);
+    spyOn(localStorage, 'setItem')
+      .and.callFake(mockLocalStorage.setItem);
+    spyOn(localStorage, 'removeItem')
+      .and.callFake(mockLocalStorage.removeItem);
+    spyOn(localStorage, 'clear')
+      .and.callFake(mockLocalStorage.clear);
   });
 
   it('should be created', () => {
@@ -46,6 +71,16 @@ describe('PhotoServiceService', () => {
     });
   });
 
+  it('should add favorite to localstorage', function () {
+    const photo = photoMock[0];
+    service.addPhotoToFavorite(photo);
+    const json = localStorage.getItem('favorites');
+    expect(json).toBeTruthy();
+    if (!json) return;
+    const data = JSON.parse(json);
+    expect(data?.length).toBeTruthy();
+  });
+
   it('should remove photo from favorite',  (done) => {
     const photo = photoMock[0];
     service.addPhotoToFavorite(photo);
@@ -54,6 +89,7 @@ describe('PhotoServiceService', () => {
       expect(res.length).not.toBeTruthy();
       done();
     });
+    expect(localStorage.setItem).toHaveBeenCalled();
   });
 
 
